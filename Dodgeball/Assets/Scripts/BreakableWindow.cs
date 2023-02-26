@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("Breakable Windows/Breakable Window")]
@@ -149,7 +148,6 @@ public class BreakableWindow : MonoBehaviour {
         mf.mesh = m;
         
         MeshCollider col = obj.AddComponent<MeshCollider>();
-        //col.inflateMesh = true;
         col.convex = true;
         if (destroyPhysicsTime > 0 && destroyColliderWithPhysics) Destroy(col, destroyPhysicsTime);
         
@@ -190,10 +188,6 @@ public class BreakableWindow : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Breaks the window and returns an array of all splinter gameobjects.
-    /// </summary>
-    /// <returns>Returns an array of all splinter gameobjects.</returns>
     public GameObject[] breakWindow()
     {
         if (isBroken == false)
@@ -231,7 +225,6 @@ public class BreakableWindow : MonoBehaviour {
 
         return splinters.ToArray();
     }
-
 
     void OnCollisionEnter(Collision col)
     {

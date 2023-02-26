@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &33601212173944448
 MeshFilter:
@@ -128,10 +128,6 @@ MonoBehaviour:
   addTorques: 1
   hideSplintersInHierarchy: 1
   useCollision: 1
-  health: 0
-  destroyPhysicsTime: 5
-  destroyColliderWithPhysics: 1
-  destroySplintersTime: 0
   breakingSound: {fileID: 8300000, guid: 55463b8f1dbd34640bfb80ee6072bec9, type: 3}
   isBroken: 0
   splinters: []

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [AddComponentMenu("Breakable Windows/Breakable Window")]
 [RequireComponent(typeof(AudioSource))]
@@ -18,18 +20,6 @@ public class BreakableWindow : MonoBehaviour {
     public bool addTorques = true;
     public bool hideSplintersInHierarchy = true;
     public bool useCollision = true;
-    [Tooltip("Use 0 for breaking immediately if a collision is detected.")]
-    public float health = 0;
-
-    [Space]
-    [Space]
-    [Tooltip("Seconds after window is broken that physics have to be destroyed.")]
-    public float destroyPhysicsTime = 5;
-    public bool destroyColliderWithPhysics = true;
-
-    [Space]
-    [Tooltip("Seconds after window is broken that splinters have to be destroyed.")]
-    public float destroySplintersTime = 0;
 
     [Space]
     public AudioClip breakingSound;
@@ -62,7 +52,6 @@ public class BreakableWindow : MonoBehaviour {
     {
         vertices = new Vector3[(partsX + 1) * (partsY + 1)];
         normals = new Vector3[(partsX + 1) * (partsY + 1)];
-        
 
         for (int y = 0; y < partsY + 1; y++)
         {
@@ -132,9 +121,6 @@ public class BreakableWindow : MonoBehaviour {
         obj.transform.rotation = transform.rotation;
         obj.layer = layer.value;
         obj.name = "Glass Splinter";
-        if (destroySplintersTime > 0)
-            Destroy(obj, destroySplintersTime);
-
 
         if (preCalculate == true)
         {
@@ -149,12 +135,10 @@ public class BreakableWindow : MonoBehaviour {
         
         MeshCollider col = obj.AddComponent<MeshCollider>();
         col.convex = true;
-        if (destroyPhysicsTime > 0 && destroyColliderWithPhysics) Destroy(col, destroyPhysicsTime);
         
         Rigidbody rigid = obj.AddComponent<Rigidbody>();
         rigid.centerOfMass = (v[0] + v[1] + v[2]) / 3f;
         if (addTorques && preCalculate == false) rigid.AddTorque(new Vector3(Random.value > 0.5f ? Random.value * 50 : -Random.value * 50, Random.value > 0.5f ? Random.value * 50 : -Random.value * 50, Random.value > 0.5f ? Random.value * 50 : -Random.value * 50));
-        if (destroyPhysicsTime > 0) Destroy(rigid, destroyPhysicsTime);
 
         MeshRenderer mr = obj.AddComponent<MeshRenderer>();
         mr.materials = GetComponent<Renderer>().materials;
@@ -226,22 +210,9 @@ public class BreakableWindow : MonoBehaviour {
         return splinters.ToArray();
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision collision)
     {
-        if (useCollision == true)
-        {
-            if (health > 0)
-            {
-                health -= col.impulse.magnitude;
-                if (health < 0)
-                {
-                    health = 0;
-                    breakWindow();
-                }
-            }
-            else breakWindow();
-
-            Destroy(gameObject, destroyingTime);
-        }        
+        breakWindow();
+        Destroy(gameObject, destroyingTime);
     }
 }

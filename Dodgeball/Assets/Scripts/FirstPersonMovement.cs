@@ -2,7 +2,7 @@
 
 public class FirstPersonMovement : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
 
     public float speed = 5;
 

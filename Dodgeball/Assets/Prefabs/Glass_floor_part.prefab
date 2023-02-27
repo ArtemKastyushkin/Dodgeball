@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 23026058275702258}
   - component: {fileID: 114381180135537044}
   - component: {fileID: 82815429267135604}
+  - component: {fileID: 2260424055485560879}
   m_Layer: 0
   m_Name: Glass_floor_part
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &33601212173944448
 MeshFilter:
@@ -131,6 +132,7 @@ MonoBehaviour:
   breakingSound: {fileID: 8300000, guid: 55463b8f1dbd34640bfb80ee6072bec9, type: 3}
   isBroken: 0
   splinters: []
+  _destructible: {fileID: 2260424055485560879}
 --- !u!82 &82815429267135604
 AudioSource:
   m_ObjectHideFlags: 0
@@ -227,3 +229,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &2260424055485560879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643765196433972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49bdfa3bebd4cf40b1096321b866d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ApplyDestroying:
+    m_PersistentCalls:
+      m_Calls: []

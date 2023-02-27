@@ -2,29 +2,22 @@ using UnityEngine;
 
 abstract public class Projectile : MonoBehaviour
 {
+    private float _speed = 800.0f;
     private float _lowerBound = -5.0f;
-    private float _lifeTime = 5.0f;
-    private float _time;
 
     protected Rigidbody _rigidbody;
-    protected float _speed;
-    protected float _damage;
+    protected float _time = 0;
 
-    protected abstract void Awake();
-    //protected abstract void OnCollisionEnter(Collision collision);
-
-    protected void Start()
+    protected virtual void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         Vector3 speed = transform.up * _speed;
         _rigidbody.AddForce(speed);
     }
 
-    protected void Update()
+    protected virtual void FixedUpdate()
     {
-        _time += Time.deltaTime;
-
-        if (transform.position.y < _lowerBound || _time > _lifeTime)
+        if (transform.position.y < _lowerBound)
             Destroy(gameObject);
     }
 }

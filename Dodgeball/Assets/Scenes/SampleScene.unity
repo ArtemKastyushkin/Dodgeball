@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1647657183, guid: 44786eceab47bfe4f8ff32e73d608a5a, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 1698056052845220, guid: 07568551e31b50d4f909b02a45102f37, type: 3}
     - target: {fileID: 1773623360729482, guid: 44786eceab47bfe4f8ff32e73d608a5a, type: 3}
       propertyPath: m_Name
       value: FPS_Controller
@@ -178,6 +182,10 @@ PrefabInstance:
     - target: {fileID: 4207293392497186, guid: 44786eceab47bfe4f8ff32e73d608a5a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54063890643546284, guid: 44786eceab47bfe4f8ff32e73d608a5a, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -378,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 1194447151}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

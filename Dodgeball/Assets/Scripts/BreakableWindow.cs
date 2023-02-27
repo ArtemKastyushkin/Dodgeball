@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 [AddComponentMenu("Breakable Windows/Breakable Window")]
 [RequireComponent(typeof(AudioSource))]
 public class BreakableWindow : MonoBehaviour {
-
     
     [Tooltip("Layer should be TransparentFX or your own layer for breakable windows.")]
     public LayerMask layer;
@@ -24,7 +23,6 @@ public class BreakableWindow : MonoBehaviour {
     [Space]
     public AudioClip breakingSound;
 
-
     [HideInInspector]
     public bool isBroken = false;
     [HideInInspector]
@@ -38,7 +36,10 @@ public class BreakableWindow : MonoBehaviour {
 
     private float destroyingTime = 2.0f;
 
-    void Start()
+    [SerializeField]
+    private Destructible _destructible;
+
+    private void Start()
     {
         if (preCalculate == true && allreadyCalculated == false)
         {
@@ -46,6 +47,17 @@ public class BreakableWindow : MonoBehaviour {
             bakeSplinters();
             allreadyCalculated = true;
         }
+
+        if (_destructible!= null)
+        {
+            _destructible.ApplyDestroying.AddListener(DestroyWindow);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (_destructible != null) 
+            _destructible.ApplyDestroying.RemoveListener(DestroyWindow);
     }
 
     private void bakeVertices(bool trianglesToo = false)
@@ -172,7 +184,7 @@ public class BreakableWindow : MonoBehaviour {
         }
     }
 
-    public GameObject[] breakWindow()
+    private GameObject[] breakWindow()
     {
         if (isBroken == false)
         {
@@ -210,9 +222,14 @@ public class BreakableWindow : MonoBehaviour {
         return splinters.ToArray();
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void DestroyWindow()
     {
         breakWindow();
         Destroy(gameObject, destroyingTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        DestroyWindow();
     }
 }

@@ -4,9 +4,12 @@ public class Throw : MonoBehaviour
 {
     private float _time;
 
-    public GameObject Projectile;
-    public Transform SpawnPoint;
-    public float RateOfFire;
+    [SerializeField]
+    private GameObject _projectile;
+    [SerializeField]
+    private Transform _spawnPoint;
+    [SerializeField]
+    private float _rateOfFire;
 
     private void Update()
     {
@@ -14,10 +17,10 @@ public class Throw : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (_time >= RateOfFire)
+            if (_time >= _rateOfFire)
             {
-                if (Projectile == null) return;
-                Instantiate(Projectile, SpawnPoint.position, SpawnPoint.rotation);
+                if (_projectile == null) return;
+                Instantiate(_projectile, _spawnPoint.position, _spawnPoint.rotation);
                 _time = 0;
             }
         }

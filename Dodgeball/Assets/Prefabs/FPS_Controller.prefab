@@ -347,7 +347,7 @@ Transform:
   - {fileID: 4773208539257838}
   - {fileID: 687180948}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &136877096903737240
 CapsuleCollider:
@@ -438,9 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb77898e0fe62e40a1ac6df4f6e310a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 3032752402822182190, guid: e75a0e5897e045d40aa701dc7b462f02, type: 3}
-  SpawnPoint: {fileID: 2377888908686213781}
-  RateOfFire: 1
+  _projectile: {fileID: 3032752402822182190, guid: e75a0e5897e045d40aa701dc7b462f02, type: 3}
+  _spawnPoint: {fileID: 2377888908686213781}
+  _rateOfFire: 1
 --- !u!1 &2843967907892502502
 GameObject:
   m_ObjectHideFlags: 0

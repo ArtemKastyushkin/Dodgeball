@@ -18,7 +18,6 @@ public class BreakableWindow : MonoBehaviour {
     public bool preCalculate = true;
     public bool addTorques = true;
     public bool hideSplintersInHierarchy = true;
-    public bool useCollision = true;
 
     [Space]
     public AudioClip breakingSound;
@@ -226,10 +225,5 @@ public class BreakableWindow : MonoBehaviour {
     {
         breakWindow();
         Destroy(gameObject, destroyingTime);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        DestroyWindow();
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Explosion))]
 public class FragGrenade : Projectile
 {
     private Explosion _explosion;
@@ -14,14 +15,12 @@ public class FragGrenade : Projectile
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+
         _time += Time.deltaTime;
 
         if (_time > _timeToExplosion)
         {
-            if (_explosion != null)
-            {
-                _explosion.Explode();
-            }
+            _explosion.Explode();
         }
     }
 }

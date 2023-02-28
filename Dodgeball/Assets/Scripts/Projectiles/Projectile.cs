@@ -20,4 +20,12 @@ abstract public class Projectile : MonoBehaviour
         if (transform.position.y < _lowerBound)
             Destroy(gameObject);
     }
+
+    protected virtual void OnCollisionEnter(Collision collision)
+    {
+        Destructible destructible = collision.gameObject.GetComponent<Destructible>();
+
+        if (destructible != null)
+            destructible.Destroy();
+    }
 }

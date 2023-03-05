@@ -49,14 +49,14 @@ public class BreakableWindow : MonoBehaviour {
 
         if (_destructible!= null)
         {
-            _destructible.ApplyDestroying.AddListener(DestroyWindow);
+            _destructible.Kill.AddListener(DestroyWindow);
         }
     }
 
     private void OnDestroy()
     {
         if (_destructible != null) 
-            _destructible.ApplyDestroying.RemoveListener(DestroyWindow);
+            _destructible.Kill.RemoveListener(DestroyWindow);
     }
 
     private void bakeVertices(bool trianglesToo = false)

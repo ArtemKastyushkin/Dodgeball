@@ -3,12 +3,18 @@ using UnityEngine;
 public class Explosion : MonoBehaviour
 {
     private float _explosionLifeTime = 1.0f;
+    private Projectile _projectile;
 
     [SerializeField]
     private float _radius;
 
     [SerializeField]
     private GameObject _explosionEffect;
+
+    private void Start()
+    {
+        _projectile = GetComponent<Projectile>();
+    }
 
     public void Explode()
     {
@@ -20,7 +26,7 @@ public class Explosion : MonoBehaviour
 
             if (destructible != null)
             {
-                destructible.Destroy();
+                destructible.TakeDamage(_projectile.Damage);
             }
         }
 

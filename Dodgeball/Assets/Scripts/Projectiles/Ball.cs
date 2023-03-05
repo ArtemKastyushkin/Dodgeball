@@ -4,6 +4,12 @@ public class Ball : Projectile
 {
     private float _lifeTime = 4.0f;
 
+    protected override void Start()
+    {
+        base.Start();
+        Damage = 1;
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();

@@ -4,13 +4,17 @@ public class Throw : MonoBehaviour
 {
     private float _time;
     private GameObject _projectile;
+    private ProjectileBag _projectileBag;
 
     [SerializeField]
     private Transform _spawnPoint;
     [SerializeField]
     private float _rateOfFire;
-    [SerializeField]
-    private ProjectileBag _projectileBag;
+
+    private void Start()
+    {
+        _projectileBag = GameObject.Find("Projectile Bag").GetComponent<ProjectileBag>();
+    }
 
     private void Update()
     {
@@ -20,6 +24,7 @@ public class Throw : MonoBehaviour
         {
             if (_time >= _rateOfFire)
             {
+                if (_projectileBag == null) return;
                 _projectile = _projectileBag.GetProjectile();
 
                 if (_projectile == null) return;

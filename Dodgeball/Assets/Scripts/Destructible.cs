@@ -3,10 +3,17 @@ using UnityEngine.Events;
 
 public class Destructible : MonoBehaviour
 {
-    public UnityEvent ApplyDestroying;
+    [SerializeField]
+    private int _health = 1;
 
-    public void Destroy()
+    [HideInInspector]
+    public UnityEvent Kill;
+
+    public void TakeDamage(int damage)
     {
-        ApplyDestroying.Invoke();
+        _health -= damage;
+
+        if (_health <= 0)
+            Kill.Invoke();
     }
 }

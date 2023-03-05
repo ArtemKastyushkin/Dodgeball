@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceThreshold: 0.15
-  isGrounded: 1
+  isGrounded: 0
 --- !u!1 &1593727746557118
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 114963311885979670}
   - component: {fileID: 114497868231759342}
   - component: {fileID: 1647657183}
+  - component: {fileID: 6430504199952869483}
   m_Layer: 0
   m_Name: FPS_Controller
   m_TagString: Untagged
@@ -347,7 +348,7 @@ Transform:
   - {fileID: 4773208539257838}
   - {fileID: 687180948}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &136877096903737240
 CapsuleCollider:
@@ -411,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367a23dce3aa48d40b0a96ab80c45d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
 --- !u!114 &114497868231759342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,9 +439,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb77898e0fe62e40a1ac6df4f6e310a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 3032752402822182190, guid: e75a0e5897e045d40aa701dc7b462f02, type: 3}
   _spawnPoint: {fileID: 2377888908686213781}
   _rateOfFire: 1
+--- !u!114 &6430504199952869483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773623360729482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49bdfa3bebd4cf40b1096321b866d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 1
+  Kill:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2843967907892502502
 GameObject:
   m_ObjectHideFlags: 0

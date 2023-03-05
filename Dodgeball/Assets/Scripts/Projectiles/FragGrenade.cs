@@ -9,6 +9,7 @@ public class FragGrenade : Projectile
     protected override void Start()
     {
         base.Start();
+        Damage = 3;
         _explosion = GetComponent<Explosion>();
     }
 
